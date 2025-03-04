@@ -3,11 +3,22 @@
 A responsive and interactive hotel login UI concept created with the assistance of Claude 3.7 Sonnet via Poe.
 
 ![DEMO](images/demo.png)
-[View the Demo](https://poe.com/preview/Ddp8E147qEJ9hTwcHqFw)
+<p align="center">
+  <a href="https://your-demo-link.com">
+    <img src="https://img.shields.io/badge/🚀 View%20Demo-blue?style=for-the-badge" alt="View Demo">
+  </a>
+</p>
 
-**README Language Options**
-- [English (Current)](README.md)
-- [中文](README.zh-CN.md)
+
+<p align="center">
+  <a href="README.md">
+    <img src="https://img.shields.io/badge/🇬🇧 English-blue?style=for-the-badge" alt="English">
+  </a>
+  <a href="README.zh-CN.md">
+    <img src="https://img.shields.io/badge/🇨🇳 中文-red?style=for-the-badge" alt="Chinese">
+  </a>
+</p>
+
 
 <details>
 <summary><strong>Project Background</strong> (Click to expand)</summary>
