@@ -2,6 +2,8 @@
 
 A responsive and interactive hotel login UI concept created with the assistance of Claude 3.7 Sonnet via Poe.
 
+![DEMO](images/Demo.png)
+
 **README Language Options**
 - [English (Current)](README.md)
 - [中文](README.zh-CN.md)
@@ -69,6 +71,7 @@ This is a demonstration project only. Feel free to use it as inspiration for you
 - Background image from Unsplash
 - Design inspiration from pxdx.studio
 - This demo's design references a concept by pxdx.studio: https://www.instagram.com/p/C7j8A5Et67s/?utm_source=ig_web_copy_link
+- ![Reference Image](images/reference-image.png)
 - While attribution is not strictly required, I would greatly appreciate if you credit @lepadphone when using or referencing this work
 </details>
 
