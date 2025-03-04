@@ -2,7 +2,7 @@
 
 A responsive and interactive hotel login UI concept created with the assistance of Claude 3.7 Sonnet via Poe.
 
-![DEMO](images/Demo.png)
+![DEMO](images/demo.png)
 
 **README Language Options**
 - [English (Current)](README.md)
