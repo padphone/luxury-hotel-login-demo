@@ -1,29 +1,37 @@
 # Luxury Hotel Login Demo
 
 A responsive and interactive hotel login UI concept created with the assistance of Claude 3.7 Sonnet via Poe.
+
 **README Language Options**
 - [English (Current)](README.md)
 - [中文](README.zh-CN.md)
 
-## Project Background
+<details>
+<summary><strong>Project Background</strong> (Click to expand)</summary>
 
 This demo was created using simple prompts along with reference images from pxdx.studio. Through less than 10 conversation rounds with Claude 3.7 Sonnet (in fact, the basic implementation was achieved in just 3 rounds, which was incredibly efficient), I was able to create this design. The interactive animations were implemented in about 2 rounds, with the remaining time spent on fine-tuning details like fonts, copy text, and color adjustments.
 
 While this is just a demo with several limitations that might prevent it from being used in any actual project, for someone like me with no prior AI frontend programming experience, building such an impressive webpage in under 10 minutes was an incomparable delight.
+</details>
 
-## AI Prompts I Used
+<details>
+<summary><strong>AI Prompts I Used</strong> (Click to expand)</summary>
 
 > 1. "Completely analyze this interface's functionality and interaction logic, then implement a similar interface with interactive features and a simple data backend, with a frosted glass design style."
 
 > 2. "Can you mimic this part of the design style as much as possible? You can first analyze its layout and design style."
 
 These simple prompts, combined with reference images, were all that was needed to generate the functional code.
+</details>
 
-## Disclaimer of Commercial Relationship
+<details>
+<summary><strong>Disclaimer of Commercial Relationship</strong> (Click to expand)</summary>
 
 I am a paid user of Poe and have no commercial partnership, affiliation, or financial relationship with Anthropic (creators of Claude) or Poe. This demo was created for personal educational purposes only. Any mention of Claude 3.7 Sonnet or Poe is purely for attribution of the tools used in creation.
+</details>
 
-## External Resources Disclaimer
+<details>
+<summary><strong>External Resources Disclaimer</strong> (Click to expand)</summary>
 
 This demo includes references to external resources through its Content Security Policy (CSP). The original code was generated using Claude 3.7 Sonnet on the Poe platform, which automatically adds these CSP permissions to allow various external libraries and resources to function if needed.
 
@@ -38,6 +46,7 @@ This demo includes references to external resources through its Content Security
 4. **Unicode Icons**: Some Unicode characters are used as icons (such as 🔑), which are part of standard character sets and don't require external resources.
 
 5. **No Data Collection**: This demo does not collect, store, or transmit any user data. The login functionality is simulated and no actual authentication occurs.
+</details>
 
 ## Features
 
@@ -47,21 +56,27 @@ This demo includes references to external resources through its Content Security
 - Form validation with visual feedback
 - Promotional section showcasing hotel events and offerings
 
-## Usage
+<details>
+<summary><strong>Usage</strong> (Click to expand)</summary>
 
 This is a demonstration project only. Feel free to use it as inspiration for your own projects, but please note the attribution requirements below.
+</details>
 
-## Attribution
+<details>
+<summary><strong>Attribution</strong> (Click to expand)</summary>
 
 - UI concept and implementation created with Claude 3.7 Sonnet
 - Background image from Unsplash
 - Design inspiration from pxdx.studio
 - This demo's design references a concept by pxdx.studio: https://www.instagram.com/p/C7j8A5Et67s/?utm_source=ig_web_copy_link
 - While attribution is not strictly required, I would greatly appreciate if you credit @lepadphone when using or referencing this work
+</details>
 
-## License
+<details>
+<summary><strong>License</strong> (Click to expand)</summary>
 
 This project is available for educational and personal use only. **Commercial use is strictly prohibited**. Any derivative works must maintain this non-commercial restriction.
+</details>
 
 [View the Demo](luxury-hotel-login-demo-claude-3.7-sonnet.html)
 
