@@ -1,5 +1,5 @@
 # ✨ Luxury Hotel Login Demo 🏨
-![Demo-image](images/Demo.png)
+![Demo-image](images/demo.png)
 
 A **responsive** and **interactive** hotel login UI concept, designed with the assistance of **Claude 3.7 Sonnet** via Poe. 🌟
 
