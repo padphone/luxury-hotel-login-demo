@@ -33,12 +33,17 @@ A **responsive** and **interactive** hotel login UI concept, designed with the a
 <details>
 <summary><strong>📜 Project Background</strong> (Click to expand) 🔍</summary>
 
-🎯 This demo was crafted using **simple prompts + reference images** from `pxdx.studio`.  
-💡 **Efficiency**: The core design was completed in just **3 conversation rounds**!  
-⚡ **Interactivity**: Animations were added in only **2 rounds**!  
-🎨 **Final tuning**: Fonts, text, and colors were adjusted in the last phase.  
+This demo was created using simple prompts along with reference images from **pxdx.studio**.  
 
-Although this is **just a demo**, it showcases how **AI-powered frontend design** can be done in **minutes** even for beginners! 🚀
+Through **less than 10 conversation rounds** with **Claude 3.7 Sonnet**, I was able to create this design.  
+📌 **Key milestones:**  
+- The **basic implementation** was achieved in just **3 rounds**, which was incredibly efficient.  
+- The **interactive animations** were implemented in about **2 rounds**.  
+- The remaining time was spent on **fine-tuning** details like **fonts, copy text, and color adjustments**.  
+
+While this is **just a demo** with **several limitations** that might prevent it from being used in any actual project,  
+for someone like me with **no prior AI frontend programming experience**,  
+📌 **building such an impressive webpage in under 10 minutes** was an **incomparable delight**. 🎉
 </details>
 
 <details>
