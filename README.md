@@ -81,7 +81,7 @@ This is a demonstration project only. Feel free to use it as inspiration for you
 This project is available for educational and personal use only. **Commercial use is strictly prohibited**. Any derivative works must maintain this non-commercial restriction.
 </details>
 
-[View the Demo](html/luxury-hotel-login-demo-claude-3.7-sonnet.html)
+[View the Demo]([html/luxury-hotel-login-demo-claude-3.7-sonnet.html](https://poe.com/preview/Ddp8E147qEJ9hTwcHqFw))
 
 ---
 
