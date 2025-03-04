@@ -3,6 +3,7 @@
 A responsive and interactive hotel login UI concept created with the assistance of Claude 3.7 Sonnet via Poe.
 
 ![DEMO](images/demo.png)
+[View the Demo](https://poe.com/preview/Ddp8E147qEJ9hTwcHqFw)
 
 **README Language Options**
 - [English (Current)](README.md)
@@ -81,7 +82,7 @@ This is a demonstration project only. Feel free to use it as inspiration for you
 This project is available for educational and personal use only. **Commercial use is strictly prohibited**. Any derivative works must maintain this non-commercial restriction.
 </details>
 
-[View the Demo]([html/luxury-hotel-login-demo-claude-3.7-sonnet.html](https://poe.com/preview/Ddp8E147qEJ9hTwcHqFw))
+
 
 ---
 
