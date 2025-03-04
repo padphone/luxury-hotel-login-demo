@@ -1,0 +1,1127 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Hotel - Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            /* Elegant minimalist hotel interior style background */
+            background: url('https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            perspective: 1500px; /* Add perspective effect to the entire page */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 1000px;
+            position: relative;
+        }
+
+        .panels-container {
+            display: flex;
+            flex-wrap: wrap; /* Allow panels to wrap */
+            gap: 15px;
+            margin-bottom: 20px;
+            perspective: 1000px; /* Add perspective effect to panel container */
+        }
+
+        .panel {
+            border-radius: 40px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            overflow: hidden;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform-style: preserve-3d; /* Maintain 3D transforms */
+            transform: perspective(1000px) rotateX(0) rotateY(0); /* Initial no rotation */
+            flex: 1 1 calc(50% - 7.5px); /* Each panel takes 50% width minus gap */
+            min-width: 300px; /* Ensure panels have minimum width */
+        }
+
+        /* Add 3D effect to cards on hover */
+        .panel:hover {
+            transform: perspective(1000px) rotateX(2deg) rotateY(-5deg) scale(1.03);
+            box-shadow: 20px 20px 30px rgba(0,0,0,0.2);
+        }
+
+        .left-panel {
+            background-color: rgba(245, 243, 240, 0.8);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            min-height: 550px;
+        }
+
+        /* Different rotation directions for left and right panels */
+        .left-panel:hover {
+            transform: perspective(1000px) rotateX(2deg) rotateY(-5deg) scale(1.03);
+        }
+
+        .right-panel {
+            background-color: rgba(245, 243, 240, 0.8);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            min-height: 550px;
+        }
+
+        .right-panel:hover {
+            transform: perspective(1000px) rotateX(2deg) rotateY(5deg) scale(1.03);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            transform-style: preserve-3d;
+            transform: translateZ(20px); /* Make title float */
+        }
+
+        .logo {
+            color: #666;
+            font-size: 1.4rem;
+            font-weight: 400;
+        }
+
+        .signup-link {
+            color: #666;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .signup-link:hover {
+            color: #9c7c5a;
+            transform: translateZ(10px); /* Link floats more on hover */
+        }
+
+        .login-title {
+            font-size: 2.5rem;
+            font-weight: 500;
+            margin-bottom: 25px;
+            color: #333;
+            transform: translateZ(30px); /* Make title more prominent */
+        }
+
+        .facebook-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 25px;
+            border-radius: 50px;
+            border: 1px solid rgba(200, 200, 200, 0.7);
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            margin-bottom: 25px;
+            width: fit-content;
+            margin-left: 0;
+            transition: all 0.3s ease;
+            transform: translateZ(20px); /* Make button float */
+        }
+
+        .facebook-btn:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: translateZ(30px) translateY(-2px); /* Float more when hovering */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .facebook-btn svg {
+            margin-right: 8px;
+        }
+
+        .facebook-btn span {
+            color: #555;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 35px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            transform: translateZ(10px); /* Make input field slightly float */
+        }
+
+        .input-group:hover, .input-group:focus-within {
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transform: translateZ(20px); /* Float more on hover */
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 18px 18px 18px 70px;
+            border: none;
+            background: transparent;
+            font-size: 1.1rem;
+            outline: none;
+            color: #444;
+        }
+
+        .input-group input::placeholder {
+            color: #777;
+        }
+
+        .input-group .icon-container {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            transition: all 0.3s ease;
+        }
+
+        .input-group:hover .icon-container {
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transform: translateY(-50%) translateZ(5px); /* Let the icon float slightly */
+        }
+
+        .forgot-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 25px;
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.3s ease;
+        }
+
+        .forgot-link:hover {
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            color: #9c7c5a;
+            transform: translateY(-50%) translateZ(10px); /* Make the forgot password link float */
+        }
+
+        .warning-text {
+            font-size: 0.75rem;
+            color: #777;
+            line-height: 1.5;
+            margin: 25px 0;
+            max-width: 90%;
+            transform: translateZ(15px); /* Make text float */
+        }
+
+        .warning-text a {
+            color: #9c7c5a;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .warning-text a:hover {
+            text-decoration: underline;
+            transform: translateZ(5px); /* Links float slightly on hover */
+        }
+
+        .submit-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            transform: translateZ(25px); /* Make submit area float */
+        }
+
+        .responsible-text {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .submit-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #3a3a3a;
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #4a4a4a;
+            transform: translateZ(10px) scale(1.1); /* Button floats and enlarges on hover */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Create a dedicated container for the black card */
+        .black-card-container {
+            width: calc(50% - 7.5px); /* Same width as the left card */
+            margin-left: 0;
+        }
+
+        .new-section {
+            /* Default state: pure black with frosted glass effect */
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: white;
+            border-radius: 40px;
+            height: 170px;
+            width: 100%; /* Width relative to parent container */
+            position: relative;
+            padding: 25px 40px; /* Reduce top padding */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            transform-style: preserve-3d;
+            transform: perspective(1000px) rotateX(0) rotateY(0);
+            overflow: hidden; /* Ensure light sweep effect doesn't exceed card boundaries */
+        }
+
+        /* Hover state: 80% opacity */
+        .new-section:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: perspective(1000px) rotateX(5deg) rotateY(-8deg) scale(1.05);
+            box-shadow: 20px 20px 40px rgba(0,0,0,0.3);
+            cursor: pointer;
+        }
+
+        /* Add light sweep effect to black card */
+        .new-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.1) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(45deg) translateY(-100%);
+            transition: transform 0.8s ease;
+            pointer-events: none; /* Ensure it doesn't affect mouse events */
+        }
+
+        /* Trigger light sweep animation on hover */
+        .new-section:hover::before {
+            transform: rotate(45deg) translateY(100%);
+        }
+
+        .new-title {
+            position: absolute;
+            top: 20px; /* Closer to top */
+            left: 40px;
+            display: flex;
+            flex-direction: column;
+            transform-style: preserve-3d;
+            transform: translateZ(30px); /* Make title float */
+        }
+
+        .new-title h2 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            line-height: 1.1;
+        }
+
+        .new-title p {
+            color: #ccc;
+            font-size: 1.1rem;
+        }
+
+        .discover-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+            transform: translateZ(20px); /* Make link float */
+        }
+
+        .new-section:hover .discover-link {
+            transform: translateZ(40px) translateX(-5px); /* Link floats more on hover */
+        }
+
+        /* Right Panel Styles */
+        .event-header {
+            text-align: right;
+            margin-bottom: 40px;
+            transform: translateZ(20px); /* Make title float */
+        }
+
+        .event-header p {
+            color: #777;
+            font-size: 1rem;
+        }
+
+        .event-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transform-style: preserve-3d;
+        }
+
+        .date-display {
+            text-align: left;
+            transform: translateZ(30px); /* Make date display float */
+        }
+
+        .day {
+            font-size: 6rem;
+            font-weight: 500;
+            line-height: 1;
+            color: #333;
+        }
+
+        .date {
+            font-size: 7rem;
+            font-weight: 300;
+            line-height: 1;
+            color: #aaa;
+            position: relative;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            transform-style: preserve-3d;
+        }
+
+        .date:hover {
+            color: #9c7c5a;
+        }
+
+        .event-details {
+            margin-top: 20px;
+            transform: translateZ(25px); /* Make event details float */
+        }
+
+        .event-details p {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .orange-circle {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #c2b19b, #9c7c5a);
+            right: -60px;
+            top: 40%;
+            transition: all 0.5s ease;
+            transform-style: preserve-3d;
+        }
+
+        .right-panel:hover .orange-circle {
+            transform: translateZ(-50px) translateX(-15px) scale(1.1); /* Circle moves back on hover, creating depth */
+        }
+
+        .bottom-content {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            transform-style: preserve-3d;
+            transform: translateZ(25px); /* Make bottom content float */
+        }
+
+        .join-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+            border-radius: 30px;
+            background: #3a3a3a;
+            color: white;
+            text-decoration: none;
+            min-width: 120px;
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+
+        .join-btn:hover {
+            background: #4a4a4a;
+            transform: translateZ(15px) translateY(-5px); /* Button floats on hover */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .join-btn .arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .join-btn:hover .arrow {
+            transform: translateX(3px);
+        }
+
+        .brand-logo {
+            text-align: center;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+
+        .right-panel:hover .brand-logo {
+            transform: translateZ(20px) translateY(-5px); /* Brand logo floats on hover */
+        }
+
+        .brand-logo .star {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            display: block;
+            color: #777;
+        }
+
+        .brand-logo p {
+            color: #777;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateX(200%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        /* Add mouse movement tracking effect */
+        .panel-container {
+            position: relative;
+        }
+
+        /* Responsive design - starting from tablet */
+        @media (max-width: 1024px) {
+            .panels-container {
+                gap: 10px;
+            }
+
+            .panel {
+                padding: 30px;
+            }
+            
+            .day {
+                font-size: 5rem;
+            }
+            
+            .date {
+                font-size: 6rem;
+            }
+            
+            .new-title h2 {
+                font-size: 2rem;
+            }
+            
+            .orange-circle {
+                width: 150px;
+                height: 150px;
+                right: -40px;
+            }
+        }
+
+        /* From small tablet to large phone */
+        @media (max-width: 768px) {
+            .panel {
+                border-radius: 30px;
+                min-height: auto;
+                padding: 25px;
+                flex: 1 1 100%; /* Take up 100% width on medium screens */
+            }
+            
+            .right-panel {
+                min-height: 400px;
+            }
+            
+            /* Black card container needs to respond too */
+            .black-card-container {
+                width: 100%;
+            }
+            
+            .new-section {
+                height: 150px;
+                padding: 20px 25px;
+                border-radius: 30px;
+            }
+            
+            .login-title {
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+            
+            .date {
+                font-size: 5rem;
+            }
+            
+            .day {
+                font-size: 4rem;
+            }
+            
+            .bottom-content {
+                margin-top: 20px;
+            }
+        }
+
+        /* Phone size */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0;
+            }
+            
+            .panel {
+                border-radius: 25px;
+                padding: 20px;
+            }
+            
+            .left-panel, .right-panel {
+                min-height: auto;
+            }
+            
+            .header {
+                margin-bottom: 20px;
+            }
+            
+            .login-title {
+                font-size: 1.8rem;
+                margin-bottom: 15px;
+            }
+            
+            .facebook-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .input-group input {
+                padding: 15px 15px 15px 60px;
+                font-size: 0.9rem;
+            }
+            
+            .input-group .icon-container {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .forgot-link {
+                padding: 7px 15px;
+                font-size: 0.8rem;
+            }
+            
+            .warning-text {
+                font-size: 0.7rem;
+                margin: 15px 0;
+            }
+            
+            .submit-btn {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .day {
+                font-size: 3.5rem;
+            }
+            
+            .date {
+                font-size: 4rem;
+            }
+            
+            .event-details p {
+                font-size: 0.9rem;
+            }
+            
+            .orange-circle {
+                width: 100px;
+                height: 100px;
+                right: -30px;
+            }
+            
+            .join-btn {
+                padding: 10px 15px;
+                min-width: 100px;
+                font-size: 0.9rem;
+            }
+            
+            .brand-logo .star {
+                font-size: 1.2rem;
+            }
+            
+            .new-section {
+                height: 120px;
+                border-radius: 25px;
+            }
+            
+            .new-title h2 {
+                font-size: 1.5rem;
+            }
+            
+            .new-title p {
+                font-size: 0.9rem;
+            }
+            
+            .discover-link {
+                font-size: 0.9rem;
+                right: 20px;
+                bottom: 15px;
+            }
+            
+            .notification {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+                max-width: 280px;
+            }
+        }
+
+        /* Small phones */
+        @media (max-width: 360px) {
+            .panel {
+                padding: 15px;
+                border-radius: 20px;
+            }
+            
+            .new-section {
+                height: 100px;
+                padding: 15px 20px;
+                border-radius: 20px;
+            }
+            
+            .day {
+                font-size: 3rem;
+            }
+            
+            .date {
+                font-size: 3.5rem;
+            }
+            
+            .login-title {
+                font-size: 1.5rem;
+            }
+            
+            .submit-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .submit-btn {
+                align-self: flex-end;
+            }
+            
+            .new-title h2 {
+                font-size: 1.3rem;
+            }
+            
+            .event-header p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Touch device specific adjustments */
+        @media (hover: none) {
+            /* Disable or simplify 3D effects on touch devices */
+            .panel:hover {
+                transform: none;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            
+            /* Other touch device specific adjustments */
+            .date:active {
+                color: #9c7c5a;
+            }
+            
+            .join-btn:active {
+                background: #4a4a4a;
+            }
+            
+            .new-section:active {
+                background: rgba(0, 0, 0, 0.8);
+            }
+            
+            /* Trigger light sweep effect on touch rather than hover */
+            .new-section:active::before {
+                transform: rotate(45deg) translateY(100%);
+            }
+        }
+
+        /* Large screen adaptation */
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1200px;
+            }
+            
+            .panel {
+                min-height: 600px;
+            }
+            
+            .day {
+                font-size: 7rem;
+            }
+            
+            .date {
+                font-size: 8rem;
+            }
+            
+            .login-title {
+                font-size: 3rem;
+            }
+            
+            .input-group input {
+                padding: 22px 22px 22px 80px;
+                font-size: 1.2rem;
+            }
+            
+            .input-group .icon-container {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .new-section {
+                height: 200px;
+            }
+            
+            .new-title h2 {
+                font-size: 3rem;
+            }
+            
+            .new-title p {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Safari fixes */
+        @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+            .panel, .new-section {
+                -webkit-backdrop-filter: blur(10px);
+                backdrop-filter: blur(10px);
+            }
+        }
+
+        /* Fallback for browsers that don't support 3D transforms */
+        @supports not (transform-style: preserve-3d) {
+            .panel:hover, .left-panel:hover, .right-panel:hover {
+                transform: scale(1.03);
+            }
+            
+            .new-section:hover {
+                transform: scale(1.05);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Top two main panels -->
+        <div class="panels-container">
+            <div class="panel left-panel" id="leftPanel">
+                <div class="header">
+                    <h1 class="logo">Elegant Stay</h1>
+                    <a href="#" class="signup-link" id="signupBtn">Sign up</a>
+                </div>
+
+                <h2 class="login-title">Log in</h2>
+
+                <button class="facebook-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#1877F2">
+                        <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.35c-.538 0-.65.221-.65.778v1.222h2l-.209 2h-1.791v7h-3v-7h-2v-2h2v-2.308c0-1.769.931-2.692 3.029-2.692h1.971v3z"></path>
+                    </svg>
+                    <span>Facebook</span>
+                </button>
+
+                <form id="loginForm">
+                    <div class="input-group">
+                        <div class="icon-container">@</div>
+                        <input type="email" placeholder="e-mail address" id="email" required="">
+                    </div>
+
+                    <div class="input-group" style="position: relative;">
+                        <div class="icon-container">🔑</div>
+                        <input type="password" placeholder="password" id="password" required="">
+                        <a href="#" class="forgot-link" id="forgotPasswordBtn">I forgot</a>
+                    </div>
+
+                    <div class="warning-text">
+                        By logging in, you agree to our terms and conditions. Your personal information is protected under our privacy policy. For assistance with your reservation, please contact our <a href="#">concierge</a>.
+                    </div>
+
+                    <div class="submit-container">
+                        <p class="responsible-text">Welcome to refined luxury</p>
+                        <button type="submit" class="submit-btn">→</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="panel right-panel" id="rightPanel">
+                <div class="orange-circle"></div>
+                
+                <div class="event-header">
+                    <p>Exclusive event</p>
+                    <p>Gourmet evening</p>
+                </div>
+                
+                <div class="event-content">
+                    <div class="date-display">
+                        <div class="day">Fri</div>
+                        <div class="date" id="eventDate">22nd</div>
+                        
+                        <div class="event-details">
+                            <p>20:00 PM</p>
+                            <p>Atrium Restaurant</p>
+                            <p>Elegant Stay Hotel</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bottom-content">
+                        <a href="#" class="join-btn" id="joinBtn">
+                            Reserve
+                            <span class="arrow">→</span>
+                        </a>
+                        
+                        <div class="brand-logo">
+                            <span class="star">✷</span>
+                            <p>E.Stay</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add a dedicated container to control the width of the black card -->
+        <div class="black-card-container">
+            <!-- Bottom standalone black card, default pure black frosted glass effect, 80% transparent on hover -->
+            <div class="new-section" id="exploreSuites">
+                <div class="new-title">
+                    <h2>New suites</h2>
+                    <p>Minimalist Collection</p>
+                </div>
+                <a href="#" class="discover-link" id="discoverBtn">Explore</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+
+    <script>
+        // Simple simulated backend data
+        const userData = {
+            "guest@example.com": "password123"
+        };
+
+        // Get DOM elements
+        const loginForm = document.getElementById('loginForm');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const signupBtn = document.getElementById('signupBtn');
+        const forgotPasswordBtn = document.getElementById('forgotPasswordBtn');
+        const discoverBtn = document.getElementById('discoverBtn');
+        const exploreSuites = document.getElementById('exploreSuites');
+        const joinBtn = document.getElementById('joinBtn');
+        const notification = document.getElementById('notification');
+        const leftPanel = document.getElementById('leftPanel');
+        const rightPanel = document.getElementById('rightPanel');
+        const eventDate = document.getElementById('eventDate');
+
+        // Detect if device is touch-enabled
+        const isTouchDevice = () => {
+            return (('ontouchstart' in window) ||
+                (navigator.maxTouchPoints > 0) ||
+                (navigator.msMaxTouchPoints > 0));
+        };
+
+        // Set up date change effect
+        const dates = ['22nd', '23rd', '24th', '25th', '26th', '27th', '28th', '29th', '30th', '31st'];
+        let dateIndex = 0;
+        let dateInterval;
+        let isDateAnimating = false;
+
+        // Use different events for touch and non-touch devices
+        if (isTouchDevice()) {
+            // Touch devices use touch events
+            eventDate.addEventListener('touchstart', startDateAnimation);
+            eventDate.addEventListener('touchend', stopDateAnimation);
+        } else {
+            // Non-touch devices use mouse events
+            eventDate.addEventListener('mouseenter', startDateAnimation);
+            eventDate.addEventListener('mouseleave', stopDateAnimation);
+        }
+
+        // Start date animation
+        function startDateAnimation() {
+            if (!isDateAnimating) {
+                isDateAnimating = true;
+                dateIndex = 0; // Start from 22nd
+                
+                // Change date every 250ms
+                dateInterval = setInterval(() => {
+                    dateIndex = (dateIndex + 1) % dates.length;
+                    eventDate.textContent = dates[dateIndex];
+                }, 250);
+            }
+        }
+
+        // Stop date animation
+        function stopDateAnimation() {
+            if (isDateAnimating) {
+                clearInterval(dateInterval);
+                isDateAnimating = false;
+                
+                // Restore to 22nd
+                eventDate.textContent = '22nd';
+                dateIndex = 0;
+            }
+        }
+
+        // Function to show notifications
+        function showNotification(message) {
+            notification.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Login form submission
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = emailInput.value;
+            const password = passwordInput.value;
+            
+            if (userData[email] && userData[email] === password) {
+                showNotification('Welcome back to Elegant Stay. Your room is being prepared.');
+                // Clear form
+                loginForm.reset();
+            } else {
+                showNotification('Incorrect email or password. Please try again.');
+            }
+        });
+
+        // Sign up button
+        signupBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            showNotification('Join our exclusive membership for personalized services and room preferences.');
+        });
+
+        // Forgot password
+        forgotPasswordBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            showNotification('Password reset link has been sent to your email.');
+        });
+
+        // Explore new suites - two ways to trigger: click the link or click the entire card
+        discoverBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            showNotification('Exploring our new Minimalist Collection with refined design and comfort...');
+        });
+
+        exploreSuites.addEventListener('click', function(e) {
+            if (!e.target.matches('.discover-link')) {
+                showNotification('Exploring our new Minimalist Collection with refined design and comfort...');
+            }
+        });
+
+        // Book the event
+        if (joinBtn) {
+            joinBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                showNotification('Your reservation for the Gourmet Evening has been confirmed.');
+            });
+        }
+
+        // Facebook login
+        document.querySelector('.facebook-btn').addEventListener('click', function() {
+            showNotification('Connecting with Facebook for quick access to your preferences...');
+        });
+
+        // Add mouse movement listener, implement 3D tilt effect, only enable on non-touch devices and wide screens
+        if (!isTouchDevice() && window.innerWidth > 768) {
+            document.addEventListener('mousemove', function(e) {
+                const panels = [leftPanel, rightPanel, exploreSuites];
+                
+                panels.forEach(panel => {
+                    if (!panel) return;
+                    
+                    // Get element boundaries
+                    const rect = panel.getBoundingClientRect();
+                    
+                    // Calculate mouse's relative position in the element
+                    const x = e.clientX - rect.left; // Distance between mouse and element's left boundary
+                    const y = e.clientY - rect.top; // Distance between mouse and element's top boundary
+                    
+                    // Convert relative position to [-1, 1] range, with center point at (0,0)
+                    const xPercent = (x / rect.width) * 2 - 1;
+                    const yPercent = (y / rect.height) * 2 - 1;
+                    
+                    // Determine if mouse is on the element
+                    const isInElement = x >= 0 && x <= rect.width && y >= 0 && y <= rect.height;
+                    
+                    if (isInElement) {
+                        // Implement 3D tilt effect, mouse position determines tilt angle
+                        // Use small tilt angles to avoid exaggerated effect
+                        const rotateX = yPercent * -5; // Inverse, when mouse is at top, card tilts upward
+                        const rotateY = xPercent * 5; // When mouse is on left, card tilts left
+                        
+                        // Apply transform
+                        panel.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+                    } else {
+                        // When mouse is not on element, restore original state
+                        panel.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+                    }
+                });
+            });
+
+            // Reset all cards when mouse leaves the page
+            document.addEventListener('mouseleave', function() {
+                const panels = [leftPanel, rightPanel, exploreSuites];
+                
+                panels.forEach(panel => {
+                    if (panel) {
+                        panel.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+                    }
+                });
+            });
+        }
+    </script>
+
+
+</body></html>
